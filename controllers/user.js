@@ -35,4 +35,19 @@ const getuser = async (req, res) => {
   }
 };
 
-module.exports = { adduser, getuser };
+const deleteuser = async (req, res) => {
+  try {
+    // if (!req.params.id == "undefined") {
+    //   console.log("Id is missing");
+    //   return res.status(400).json({ err: "Id is missing" });
+    // }
+    const userId = req.params.id;
+    await User.destroy({ where: { id: userId } });
+    return res.Status(200);
+  } catch (err) {
+    console.log("delete", err);
+    res.status(500).json(err);
+  }
+};
+
+module.exports = { adduser, getuser, deleteuser };

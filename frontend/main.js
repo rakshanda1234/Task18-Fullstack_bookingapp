@@ -71,7 +71,7 @@ function editUserDetails(emailId, name, userId, number) {
 }
 //deleteUser('abc@gmail.com')
 function deleteUser(userId) {
-  userId = axios
+  axios
     .delete(`http://localhost:3000/user/delete-user/${userId}`)
     .then((response) => {
       removeUserFromScreen(userId);
